@@ -30,7 +30,7 @@
   margin: 10px;
   display: inline-block;
   vertical-align: top;
-  width: calc(30% - 30px); 
+  width: calc(30%); 
   box-sizing: border-box;
 }
 .card-image {
@@ -42,6 +42,7 @@ height: auto;
 margin-top: 5px;
 display: flex;
 flex-wrap: nowrap;
+
 }
 div{
 display: flex;
@@ -58,4 +59,5 @@ height: auto;
 .card-text {
 display: flex;;
 width: 100%;
+display: inline;
 }
