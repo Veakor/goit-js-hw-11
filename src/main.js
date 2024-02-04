@@ -1,3 +1,7 @@
+import iziToast from 'izitoast';
+import 'izitoast/dist/css/iziToast.min.css';
+import SimpleLightbox from 'simplelightbox';
+import 'simplelightbox/dist/simple-lightbox.min.css';
 
 const apiKey = '42207002-bb01baf83cbb3b924a651843b';
 const searchInput = document.getElementById('searchInput');
