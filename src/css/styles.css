@@ -39,15 +39,13 @@ height: auto;
 }
 
 .card-details {
-margin-top: 5px;
-display: flex;
+display: inline-flex;
+ margin-top: 5px;
 flex-wrap: nowrap;
-white-space: nowrap;
-
+  align-items: center;
 }
 div{
 flex-wrap: wrap;
-justify-content: center; 
 align-items: center;
 }
 
@@ -57,7 +55,7 @@ height: auto;
 
 }
 .card-text {
-width: 100%;
+
 white-space: nowrap;
 
 }
