@@ -34,7 +34,7 @@
   box-sizing: border-box;
 }
 .card-image {
-max-width: 100%;
+width: 100%;
 height: auto;
 }
 
@@ -42,22 +42,22 @@ height: auto;
 margin-top: 5px;
 display: flex;
 flex-wrap: nowrap;
+white-space: nowrap;
 
 }
 div{
-display: flex;
 flex-wrap: wrap;
 justify-content: center; 
 align-items: center;
 }
 
 .large-image {
-max-width: 100%;
+width: 100%;
 height: auto;
 
 }
 .card-text {
-display: flex;;
 width: 100%;
-display: inline;
+white-space: nowrap;
+
 }
