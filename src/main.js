@@ -1,11 +1,9 @@
 
-import iziToast from 'izitoast';
-import 'izitoast/dist/css/iziToast.min.css';
-
 const apiKey = '42207002-bb01baf83cbb3b924a651843b';
 const searchInput = document.getElementById('searchInput');
 const searchButton = document.getElementById('searchButton');
 const imageContainer = document.getElementById('imageContainer');
+
 
 searchButton.addEventListener('click', () => {
   const searchTerm = searchInput.value.trim();
@@ -19,6 +17,7 @@ searchButton.addEventListener('click', () => {
     });
   }
 });
+
 
 function searchImages(query) {
   const url = `https://pixabay.com/api/?key=${apiKey}&q=${encodeURIComponent(query)}&image_type=photo&orientation=horizontal&safesearch=true`;
@@ -45,9 +44,33 @@ function searchImages(query) {
     });
 }
 
+
 function displayImages(images) {
-  const html = images.map(image => `<img src="${image.webformatURL}" alt="${image.tags}">`).join('');
+  const html = images.map(image => generateImageCard(image)).join('');
   imageContainer.innerHTML = html;
+
+ 
+  const lightbox = new SimpleLightbox('.card-link');
+  lightbox.refresh();
+}
+
+
+function generateImageCard(image) {
+  return `
+    <div class="image-card">
+      <a href="${image.largeImageURL}" class="card-link" data-lightbox="image">
+        <img src="${image.webformatURL}" alt="${image.tags}" class="card-image">
+      </a>
+      <div class="card-details">
+        <p class="card-text"><strong>Likes:</strong> ${image.likes}</p>
+        <p class="card-text"><strong>Views:</strong> ${image.views}</p>
+      </div>
+      <div class="card-details">
+        <p class="card-text"><strong>Comments:</strong> ${image.comments}</p>
+        <p class="card-text"><strong>Downloads:</strong> ${image.downloads}</p>
+      </div>
+    </div>
+  `;
 }
 
 function clearImages() {
