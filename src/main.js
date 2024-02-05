@@ -9,7 +9,7 @@ const searchButton = document.getElementById('searchButton');
 const imageContainer = document.getElementById('imageContainer');
 const loadingIndicator = document.getElementById('loadingIndicator');
 
-document.addEventListener('submit', (event) => {
+searchForm.addEventListener('submit', (event) => {
     event.preventDefault();
     const searchTerm = searchInput.value.trim();
   
