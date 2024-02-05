@@ -3,12 +3,18 @@ import "izitoast/dist/css/iziToast.min.css";
 import SimpleLightbox from 'simplelightbox';
 import 'simplelightbox/dist/simple-lightbox.min.css';
 
+document.addEventListener('DOMContentLoaded', function(){
 const apiKey = '42207002-bb01baf83cbb3b924a651843b';
 const searchInput = document.getElementById('searchInput');
 const searchButton = document.getElementById('searchButton');
 const imageContainer = document.getElementById('imageContainer');
 const loadingIndicator = document.getElementById('loadingIndicator');
 const searchForm = document.getElementById('searchForm'); 
+
+if (!searchForm || !searchInput || !searchButton || !imageContainer || !loadingIndicator) {
+    console.error('One or more elements not found.');
+    return;
+  }
 
 searchForm.addEventListener('submit', (event) => {
     event.preventDefault();
@@ -100,3 +106,4 @@ function generateImageCard(image) {
 function clearImages() {
   imageContainer.innerHTML = '';
 }
+});
