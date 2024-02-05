@@ -7,12 +7,14 @@ const apiKey = '42207002-bb01baf83cbb3b924a651843b';
 const searchInput = document.getElementById('searchInput');
 const searchButton = document.getElementById('searchButton');
 const imageContainer = document.getElementById('imageContainer');
+const loadingIndicator = document.getElementById('loadingIndicator');
 
-
-searchButton.addEventListener('click', () => {
-  const searchTerm = searchInput.value.trim();
-
+document.addEventListener('submit', () => {
+    event.preventDefault();
+    const searchTerm = searchInput.value.trim();
+  
   if (searchTerm) {
+    showLoadingIndicator();
     searchImages(searchTerm);
   } else {
     iziToast.error({
@@ -22,20 +24,34 @@ searchButton.addEventListener('click', () => {
   }
 });
 
+function showLoadingIndicator() {
+    loadingIndicator.style.display = 'block';
+  }
+  
+function hideLoadingIndicator() {
+    if(loadingIndicator){
+    loadingIndicator.style.display = 'none';
+  }
+}
 
 function searchImages(query) {
   const url = `https://pixabay.com/api/?key=${apiKey}&q=${encodeURIComponent(query)}&image_type=photo&orientation=horizontal&safesearch=true`;
 
+  showLoadingIndicator();
+
   fetch(url)
     .then(response => response.json())
     .then(data => {
+
       if (data.hits && data.hits.length > 0) {
+        clearImages();
         displayImages(data.hits);
       } else {
         iziToast.info({
           title: 'Info',
           message: 'Sorry, there are no images matching your search query. Please try again.',
         });
+
         clearImages();
       }
     })
@@ -45,7 +61,12 @@ function searchImages(query) {
         message: 'An error occurred while fetching images. Please try again.',
       });
       console.error(error);
-    });
+    })
+
+    .finally(() => {
+
+        hideLoadingIndicator();
+      });
 }
 
 
