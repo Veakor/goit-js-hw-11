@@ -9,7 +9,7 @@ const searchButton = document.getElementById('searchButton');
 const imageContainer = document.getElementById('imageContainer');
 const loadingIndicator = document.getElementById('loadingIndicator');
 
-document.addEventListener('submit', () => {
+document.addEventListener('submit', (event) => {
     event.preventDefault();
     const searchTerm = searchInput.value.trim();
   
@@ -44,6 +44,7 @@ function searchImages(query) {
     .then(data => {
 
       if (data.hits && data.hits.length > 0) {
+
         clearImages();
         displayImages(data.hits);
       } else {
