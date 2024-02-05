@@ -8,6 +8,7 @@ const searchInput = document.getElementById('searchInput');
 const searchButton = document.getElementById('searchButton');
 const imageContainer = document.getElementById('imageContainer');
 const loadingIndicator = document.getElementById('loadingIndicator');
+const searchForm = document.getElementById('searchForm'); 
 
 searchForm.addEventListener('submit', (event) => {
     event.preventDefault();
@@ -29,15 +30,15 @@ function showLoadingIndicator() {
   }
   
 function hideLoadingIndicator() {
-    if(loadingIndicator){
+    if(loadingIndicator && loadingIndicator.style.display !== 'none'){
     loadingIndicator.style.display = 'none';
   }
 }
 
 function searchImages(query) {
-  const url = `https://pixabay.com/api/?key=${apiKey}&q=${encodeURIComponent(query)}&image_type=photo&orientation=horizontal&safesearch=true`;
+    showLoadingIndicator();
 
-  showLoadingIndicator();
+  const url = `https://pixabay.com/api/?key=${apiKey}&q=${encodeURIComponent(query)}&image_type=photo&orientation=horizontal&safesearch=true`;
 
   fetch(url)
     .then(response => response.json())
