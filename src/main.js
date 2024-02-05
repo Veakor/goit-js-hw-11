@@ -70,13 +70,10 @@ function searchImages(query) {
       });
 }
 
-
+const lightbox = new SimpleLightbox('.card-link');
 function displayImages(images) {
   const html = images.map(image => generateImageCard(image)).join('');
   imageContainer.innerHTML = html;
-
- 
-  const lightbox = new SimpleLightbox('.card-link');
   lightbox.refresh();
 }
 
